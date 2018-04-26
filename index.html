@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  </head>
+  <body>    
+    <script type="text/javascript" src="funcao_area.js" ></script>
+    <script type="text/javascript" src="funcao_numero_primo.js" ></script>
+    <script type="text/javascript" src="funcao_divisivel.js" ></script>
+    <script type="text/javascript" src="funcao_mdc.js" ></script>
+    <script type="text/javascript" src="funcao_descobrir_tamanho_da_pedra.js" ></script>
+    <h1> calcule o número de turnos de produção e o tamanho ideal da pedra a ser produzida a partir das variáveis mapeadas pelos sensores do robô:</h1>
+    <form id = "exercicio">
+        <label for="largura">r1:</label>
+        <input type="text" id="largura" />
+        <br/>
+        <label for="altura">r2:</label>
+        <input type="text" id="altura" />
+        <br/>
+        <label for="r3">r2:</label>
+        <input type="text" id="r3" />
+        <button id=enviar" type="submit">Resolver questão</button>
+    <form>
+    <div id=resultado>
+    </div>
+  <script type="text/javascript">
+    var form = document.getElementById('exercicio');
+    var resultado = document.getElementById('resultado')
+
+    function verificaFormulario(fo){
+      fo.preventDefault();
+      var resposta = document.getElementById('largura').value;
+      document.getElementById("resultado").innerHTML = resposta;
+    }
+
+  form.addEventListener("submit", verificaFormulario);
+  </script>
+  </body>
+</html>

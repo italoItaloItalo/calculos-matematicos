@@ -8,31 +8,51 @@
     <script type="text/javascript" src="funcao_divisivel.js" ></script>
     <script type="text/javascript" src="funcao_mdc.js" ></script>
     <script type="text/javascript" src="funcao_descobrir_tamanho_da_pedra.js" ></script>
-    <h1> calcule o número de turnos de produção e o tamanho ideal da pedra a ser produzida a partir das variáveis mapeadas pelos sensores do robô:</h1>
+    <script type="text/javascript" src="funcao_descobrir_quantidade_turnos.js" ></script>
+
+    <h1> Calcule o número de turnos de produção e o tamanho ideal da pedra a ser produzida, a partir das variáveis mapeadas pelos sensores do robô: </h1>
     <form id = "exercicio">
-        <label for="largura">r1:</label>
+        <label for="largura">Largura da passarela:</label><br/>
         <input type="text" id="largura" />
         <br/>
-        <label for="altura">r2:</label>
+        <label for="altura">Altura da passarela:</label><br/>
         <input type="text" id="altura" />
         <br/>
-        <label for="r3">r2:</label>
-        <input type="text" id="r3" />
+        <label for="qtdPedras">Defina a quantidade de pedras produzidas por turnos:</label><br/>
+        <input type="text" id="qtdPedras" /><br/><br/>
         <button id=enviar" type="submit">Resolver questão</button>
-    <form>
+    </form>
     <div id=resultado>
     </div>
-  <script type="text/javascript">
+        <div id=segunda>
+    </div>
+	</div>
+        <div id=terceira>
+    </div>	
+	</div>
+        <div id=quarta>
+    </div>
+   <script type="text/javascript">
     var form = document.getElementById('exercicio');
-    var resultado = document.getElementById('resultado')
-
+    var resultado = document.getElementById('resultado');
     function verificaFormulario(fo){
-      fo.preventDefault();
-      var resposta = document.getElementById('largura').value;
-      document.getElementById("resultado").innerHTML = resposta;
-    }
+    fo.preventDefault();
+   	var largura = document.getElementById('largura').value;
+   	var altura = document.getElementById('altura').value;
+   	var areaDaPassarela = area(largura,altura);
+   	var qtdPedras = document.getElementById('qtdPedras').value;
+   	var tamanhoDaPedra = descobrirTamanhoDaPedra(largura,altura);
+   	var areaDaPedra = tamanhoDaPedra * tamanhoDaPedra;
+   	var turnos = quantidadeDeTurnos(areaDaPedra,areaDaPassarela,qtdPedras);
+   	console.log(turnos);
+   	document.getElementById("resultado").innerHTML = "Tamanho ideal da pedra será: " + tamanhoDaPedra;
+   	document.getElementById("segunda").innerHTML = "A area da pedra será: " + areaDaPedra;
+   	document.getElementById("terceira").innerHTML = "A area da passarela será: " + areaDaPassarela;
+   	document.getElementById("quarta").innerHTML = "A quantidade de turnos necessarios será de: " + turnos;
 
-  form.addEventListener("submit", verificaFormulario);
+
+   	}
+ form.addEventListener("submit", verificaFormulario);
   </script>
   </body>
 </html>
